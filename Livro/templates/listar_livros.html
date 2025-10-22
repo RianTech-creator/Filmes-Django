@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" href="{% static 'Livro/css/style.css' %}">
+</head>
+<body>
+    <h1>Lista de Livros</h1>
+    <a href="{% url 'cadastrar_livro' %}">Cadastrar Novo Livro</a>
+    <br><br>
+    {% if livros %}
+        <ul>
+            {% for livro in livros %}
+                <li>
+                    <strong>Título:</strong> {{ livro.titulo }}<br>
+                    <strong>Autor:</strong> {{ livro.autor }}<br>
+                    <strong>Gênero:</strong> {{ livro.genero }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum livro cadastrado ainda.</p>
+    {% endif %}
+</body>
+</html>
